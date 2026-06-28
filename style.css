@@ -411,6 +411,38 @@ body {
 .education-school { color: var(--text-secondary); font-size: 0.9rem; }
 .education-focus { color: var(--accent-secondary); font-size: 0.85rem; margin-top: 0.25rem; }
 
+/* === Testimonials === */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+.testimonial-card {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    transition: var(--transition);
+}
+.testimonial-card:hover { border-color: var(--accent); }
+.testimonial-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+.testimonial-author strong {
+    display: block;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+.testimonial-author span {
+    color: var(--accent-secondary);
+    font-size: 0.8rem;
+}
+
 /* === Blog === */
 .blog-content { text-align: center; }
 .blog-content p { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 1.5rem; }
