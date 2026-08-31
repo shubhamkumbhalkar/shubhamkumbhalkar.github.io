@@ -519,6 +519,16 @@
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
             <p class="contact-intro">I'm always open to discussing new opportunities, interesting projects, or collaborations.</p>
+            <form class="contact-form" id="contact-form" action="https://formspree.io/f/xvkokgnp" method="POST">
+                <div class="form-row">
+                    <input type="text" name="name" placeholder="Your name" required aria-label="Your name">
+                    <input type="email" name="email" placeholder="Your email" required aria-label="Your email">
+                </div>
+                <textarea name="message" rows="4" placeholder="Your message" required aria-label="Your message"></textarea>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+                <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+            </form>
+            <p class="contact-or">or reach me directly</p>
             <div class="contact-grid">
                 <a href="mailto:shubham.kumbhalkar@gmail.com" class="contact-card">
                     <span class="contact-icon">✉️</span>

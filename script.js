@@ -105,3 +105,47 @@ document.querySelectorAll('.section, .timeline-item, .project-card, .achievement
         }).join('');
     }).catch(() => {});
 })();
+
+
+// Contact form — Formspree AJAX submit (stays on page, shows inline status)
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const status = document.getElementById('form-status');
+        const btn = contactForm.querySelector('button[type="submit"]');
+        const action = contactForm.getAttribute('action') || '';
+
+        if (action.includes('YOUR_FORM_ID')) {
+            status.className = 'form-status error';
+            status.textContent = 'Contact form is not configured yet.';
+            return;
+        }
+
+        status.className = 'form-status';
+        status.textContent = 'Sending…';
+        btn.disabled = true;
+        try {
+            const res = await fetch(action, {
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: { 'Accept': 'application/json' }
+            });
+            if (res.ok) {
+                status.className = 'form-status success';
+                status.textContent = 'Thanks! Your message has been sent.';
+                contactForm.reset();
+            } else {
+                const data = await res.json().catch(() => ({}));
+                status.className = 'form-status error';
+                status.textContent = (data.errors && data.errors[0] && data.errors[0].message)
+                    || 'Something went wrong — please email me directly.';
+            }
+        } catch (_) {
+            status.className = 'form-status error';
+            status.textContent = 'Network error — please email me directly.';
+        } finally {
+            btn.disabled = false;
+        }
+    });
+}
