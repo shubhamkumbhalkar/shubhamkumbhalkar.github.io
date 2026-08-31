@@ -49,3 +49,59 @@ document.querySelectorAll('.section, .timeline-item, .project-card, .achievement
     el.classList.add('fade-in');
     observer.observe(el);
 });
+
+
+// Dynamic blog posts — Medium + The Nuclear Geeks via rss2json (CORS-friendly).
+// Degrades gracefully: on any failure the static Medium/TNG buttons remain.
+(function loadBlogPosts() {
+    const container = document.getElementById('blog-posts');
+    if (!container) return;
+
+    const feeds = [
+        { source: 'Medium', url: 'https://medium.com/feed/@shubham.kumbhalkar' },
+        { source: 'The Nuclear Geeks', url: 'https://thenucleargeeks.com/author/shubhamkumbhalkar/feed/' }
+    ];
+    const endpoint = f => 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(f.url);
+
+    // Escape remote feed content before injecting into the DOM (prevents XSS / layout breakage).
+    const esc = s => (s || '').replace(/[&<>"']/g, c =>
+        ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const strip = html => (html || '').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+    const fmtDate = d => {
+        const dt = new Date(d);
+        return isNaN(dt) ? '' : dt.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    };
+
+    Promise.all(feeds.map(f =>
+        fetch(endpoint(f))
+            .then(r => (r.ok ? r.json() : null))
+            .then(d => (d && d.status === 'ok' ? (d.items || []).map(it => Object.assign(it, { _source: f.source })) : []))
+            .catch(() => [])
+    )).then(groups => {
+        const all = groups.flat();
+        if (!all.length) return; // keep static buttons only
+
+        // Newest first, then dedupe by title (posts are cross-published on both sites)
+        all.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+        const seen = new Set();
+        const unique = [];
+        for (const p of all) {
+            const key = (p.title || '').trim().toLowerCase();
+            if (!key || seen.has(key)) continue;
+            seen.add(key);
+            unique.push(p);
+        }
+
+        container.innerHTML = unique.slice(0, 6).map(p => {
+            let excerpt = strip(p.description || p.content || '').slice(0, 140);
+            if (excerpt.length >= 140) excerpt += '…';
+            return '<article class="blog-post-card fade-in visible">'
+                + '<div class="blog-post-meta"><span class="blog-source">' + esc(p._source) + '</span>'
+                + '<span>' + esc(fmtDate(p.pubDate)) + '</span></div>'
+                + '<h3>' + esc(p.title || 'Untitled') + '</h3>'
+                + '<p>' + esc(excerpt) + '</p>'
+                + '<a class="project-link" href="' + esc(p.link || '#') + '" target="_blank" rel="noopener">Read post →</a>'
+                + '</article>';
+        }).join('');
+    }).catch(() => {});
+})();

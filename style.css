@@ -536,3 +536,44 @@ body {
     .skills-grid { grid-template-columns: 1fr; }
     .projects-grid { grid-template-columns: 1fr; }
 }
+
+/* === Blog posts (dynamic) === */
+.blog-posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+.blog-post-card {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+.blog-post-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.1);
+}
+.blog-post-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+.blog-source {
+    background: var(--accent-glow);
+    color: var(--accent-secondary);
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    font-weight: 600;
+}
+.blog-post-card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; line-height: 1.4; }
+.blog-post-card p { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem; flex-grow: 1; }
+.blog-post-card .project-link { margin-top: auto; }
