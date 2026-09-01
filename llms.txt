@@ -1,0 +1,28 @@
+# Shubham Kumbhalkar
+
+> Senior Software Engineer (SDE II) at Amazon with 10+ years building large-scale distributed systems, cloud-native platforms on AWS, and high-throughput backend services. Domain expertise in distributed systems, microservices, Java, Python, Rust, AWS, reliability/observability, and applied Generative AI.
+
+## About
+- Software Development Engineer II at Amazon; previously Senior Software Development Engineer at LendingClub (fintech / auto lending).
+- Builds systems processing $48B+ in annual revenue at 99.99% uptime; engineered services handling 500K+ requests/sec across multiple external APIs.
+- Core domains: distributed systems, cloud infrastructure (AWS: Lambda, EKS, S3, CDK), microservices, high-throughput backend services, GenAI/NLP pipelines, reliability engineering, and fintech.
+
+## Links
+- Portfolio: https://shubhamkumbhalkar.github.io/
+- LinkedIn: https://www.linkedin.com/in/shubham-kumbhalkar/
+- GitHub: https://github.com/shubhamkumbhalkar
+- Medium: https://medium.com/@shubham.kumbhalkar
+- Blog (The Nuclear Geeks): https://thenucleargeeks.com/author/shubhamkumbhalkar/
+
+## Publications
+- "Wireless Audio Switching and Transmission System for Public Address" — International Journal of Research in Engineering and Technology (IJRET).
+
+## Recognition
+- 2nd Prize — Explore 5.0 National Competition ("LI-FI: The Smart Internet").
+- 1st Place — ZHEP14 ("Project Loon: Balloon-powered Internet").
+- 2nd Position — TECHNOPATI National Competition.
+
+## Education
+- MBA, Information Technology — Humphreys University
+- MS, Computer Science — Illinois Institute of Technology
+- BE, Electronics & Telecommunications — St. Vincent Pallotti College of Engineering and Technology

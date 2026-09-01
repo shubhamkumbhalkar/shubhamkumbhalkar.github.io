@@ -30,21 +30,40 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Shubham Kumbhalkar",
-      "url": "https://shubhamkumbhalkar.github.io/",
-      "image": "https://shubhamkumbhalkar.github.io/og-image.png",
-      "jobTitle": "Senior Software Engineer",
-      "worksFor": { "@type": "Organization", "name": "Amazon" },
-      "alumniOf": [
-        { "@type": "CollegeOrUniversity", "name": "Illinois Institute of Technology" },
-        { "@type": "CollegeOrUniversity", "name": "Humphreys University" }
-      ],
-      "knowsAbout": ["Distributed Systems", "Cloud Computing", "AWS", "Java", "Python", "Microservices"],
-      "sameAs": [
-        "https://www.linkedin.com/in/shubham-kumbhalkar/",
-        "https://github.com/shubhamkumbhalkar",
-        "https://medium.com/@shubham.kumbhalkar"
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://shubhamkumbhalkar.github.io/#person",
+          "name": "Shubham Kumbhalkar",
+          "url": "https://shubhamkumbhalkar.github.io/",
+          "image": "https://shubhamkumbhalkar.github.io/og-image.png",
+          "jobTitle": "Senior Software Engineer",
+          "worksFor": { "@type": "Organization", "name": "Amazon" },
+          "alumniOf": [
+            { "@type": "CollegeOrUniversity", "name": "Illinois Institute of Technology" },
+            { "@type": "CollegeOrUniversity", "name": "Humphreys University" },
+            { "@type": "CollegeOrUniversity", "name": "St. Vincent Pallotti College of Engineering and Technology" }
+          ],
+          "knowsAbout": ["Distributed Systems", "Cloud Computing", "AWS", "Java", "Python", "Rust", "Microservices", "System Design", "Kubernetes", "Reliability Engineering", "Observability", "Generative AI", "Fintech"],
+          "award": [
+            "2nd Prize — Explore 5.0 National Competition (LI-FI: The Smart Internet)",
+            "1st Place — ZHEP14 (Project Loon: Balloon-powered Internet)",
+            "2nd Position — TECHNOPATI National Competition"
+          ],
+          "sameAs": [
+            "https://www.linkedin.com/in/shubham-kumbhalkar/",
+            "https://github.com/shubhamkumbhalkar",
+            "https://medium.com/@shubham.kumbhalkar",
+            "https://thenucleargeeks.com/author/shubhamkumbhalkar/"
+          ]
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Wireless Audio Switching and Transmission System for Public Address",
+          "author": { "@id": "https://shubhamkumbhalkar.github.io/#person" },
+          "publisher": { "@type": "Organization", "name": "International Journal of Research in Engineering and Technology (IJRET)" },
+          "inLanguage": "en"
+        }
       ]
     }
     </script>
