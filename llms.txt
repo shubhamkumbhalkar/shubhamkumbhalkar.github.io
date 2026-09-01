@@ -11,10 +11,13 @@
 - Portfolio: https://shubhamkumbhalkar.github.io/
 - LinkedIn: https://www.linkedin.com/in/shubham-kumbhalkar/
 - GitHub: https://github.com/shubhamkumbhalkar
+- Google Scholar: https://scholar.google.com/citations?user=XXWruvEAAAAJ
+- ORCID: https://orcid.org/0009-0008-3700-3594
 - Medium: https://medium.com/@shubham.kumbhalkar
 - Blog (The Nuclear Geeks): https://thenucleargeeks.com/author/shubhamkumbhalkar/
 
 ## Publications
+- "Faster, Fairer, Cheaper: The AI Revolution in US Consumer Lending and Why Both Sides of the Loan Are Winning" — SSRN, 2026. https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6948938
 - "Wireless Audio Switching and Transmission System for Public Address" — International Journal of Research in Engineering and Technology (IJRET).
 
 ## Recognition
