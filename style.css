@@ -383,6 +383,47 @@ body {
 .achievement-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
 .achievement-card p { color: var(--text-secondary); font-size: 0.85rem; }
 
+/* === Judging section === */
+.judging-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    text-align: center;
+}
+.judging-stat {
+    padding: 1.25rem 0.75rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+.judging-stat-value {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+}
+.judging-stat-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 0.35rem;
+}
+.card-meta {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-secondary);
+    margin-bottom: 0.6rem;
+    font-family: 'JetBrains Mono', monospace;
+}
+@media (max-width: 640px) {
+    .judging-stats { grid-template-columns: repeat(2, 1fr); }
+}
+
 /* === Education === */
 .education-grid {
     display: grid;
