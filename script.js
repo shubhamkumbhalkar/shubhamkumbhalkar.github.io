@@ -188,3 +188,55 @@ if (contactForm) {
     }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
     sections.forEach(s => spy.observe(s));
 })();
+
+
+// Staggered reveal: cards within a grid animate in sequence, not all at once
+(function staggerReveals() {
+    const groups = document.querySelectorAll(
+        '.skills-grid, .projects-grid, .achievements-grid, .timeline, .education-grid, .testimonials-grid, .hero-metrics'
+    );
+    groups.forEach(group => {
+        Array.from(group.children).forEach((child, i) => {
+            if (child.classList.contains('fade-in')) {
+                child.style.transitionDelay = (i % 8) * 0.07 + 's';
+            }
+        });
+    });
+})();
+
+// Animated count-up for hero metrics when they scroll into view
+(function metricCounters() {
+    const values = document.querySelectorAll('.metric-value');
+    if (!values.length) return;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function animate(el) {
+        const text = el.textContent.trim();
+        const m = text.match(/^([^\d]*)([\d.]+)([\s\S]*)$/);
+        if (!m) return;
+        const prefix = m[1], target = parseFloat(m[2]), suffix = m[3];
+        const decimals = (m[2].split('.')[1] || '').length;
+        if (prefersReduced) { el.textContent = text; return; }
+        const dur = 1400, t0 = performance.now();
+        function step(now) {
+            const p = Math.min((now - t0) / dur, 1);
+            const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+            const val = (target * eased).toFixed(decimals);
+            el.textContent = prefix + val + suffix;
+            if (p < 1) requestAnimationFrame(step);
+            else el.textContent = text; // snap to the exact original string
+        }
+        requestAnimationFrame(step);
+    }
+
+    const seen = new WeakSet();
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting && !seen.has(e.target)) {
+                seen.add(e.target);
+                animate(e.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    values.forEach(v => io.observe(v));
+})();
