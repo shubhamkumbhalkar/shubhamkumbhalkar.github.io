@@ -149,3 +149,42 @@ if (contactForm) {
         }
     });
 }
+
+
+// Dynamic nav: shrink-on-scroll, scroll progress bar, active-section highlight
+(function dynamicNav() {
+    const nav = document.getElementById('nav');
+    const progress = document.getElementById('scroll-progress');
+    const links = Array.from(document.querySelectorAll('.nav-links a'));
+    const map = new Map();
+    links.forEach(a => {
+        const href = a.getAttribute('href') || '';
+        if (href.startsWith('#')) map.set(href.slice(1), a);
+    });
+
+    function onScroll() {
+        const y = window.scrollY || document.documentElement.scrollTop;
+        if (nav) nav.classList.toggle('scrolled', y > 20);
+        if (progress) {
+            const h = document.documentElement.scrollHeight - window.innerHeight;
+            progress.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+        }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Highlight the nav link for the section currently in view
+    const sections = Array.from(document.querySelectorAll('section[id]'));
+    const spy = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                const a = map.get(e.target.id);
+                if (a) {
+                    links.forEach(l => l.classList.remove('active'));
+                    a.classList.add('active');
+                }
+            }
+        });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    sections.forEach(s => spy.observe(s));
+})();
