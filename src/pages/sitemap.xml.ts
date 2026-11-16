@@ -1,7 +1,15 @@
 import type { APIRoute } from 'astro';
-import { caseStudies } from '../data';
+import { audiencePath, audiences, caseStudies } from '../data';
+import type { AudienceSlug } from '../data/types';
 
-const paths = ['/', '/work/', ...caseStudies.map((study) => `/work/${study.slug}/`), '/writing/', '/cv/'];
+const paths = [
+  '/',
+  ...audiences.map((item) => audiencePath(item.slug as AudienceSlug)),
+  '/work/',
+  ...caseStudies.map((study) => `/work/${study.slug}/`),
+  '/writing/',
+  '/cv/',
+];
 
 export const GET: APIRoute = ({ site }) => {
   const urls = paths

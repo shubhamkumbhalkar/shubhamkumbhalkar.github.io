@@ -156,3 +156,34 @@ export interface Site {
   nav: NavItem[];
   footer: string;
 }
+
+export type AudienceSlug = 'editors' | 'hiring' | 'engineers';
+
+export interface Audience {
+  /** One of AudienceSlug; checked when the page is built. */
+  slug: string;
+  label: string;
+  pitch: string;
+  proof: string[];
+  cta: string;
+  title: string;
+  lede: string;
+  metaDescription: string;
+  /** Case-study slugs to feature, in order. Each must exist in case-studies.json. */
+  caseStudies: string[];
+}
+
+export interface EvidenceItem {
+  label: string;
+  text: string;
+  link: Link;
+}
+
+export interface Home {
+  eyebrow: string;
+  statement: string;
+  chooser: { heading: string; intro: string };
+  evidence: { heading: string; items: EvidenceItem[] };
+  /** Case-study slugs previewed on the home page. */
+  selectedWork: string[];
+}

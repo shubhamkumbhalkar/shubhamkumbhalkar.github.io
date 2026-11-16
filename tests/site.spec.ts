@@ -98,30 +98,36 @@ test.describe('without JavaScript', () => {
     });
   }
 
-  test('home page renders every migrated section', async ({ page }) => {
+  test('home page shows a curated set, not every section', async ({ page }) => {
     await open(page, '/');
-    const sections = [
-      'about',
-      'work',
-      'writing',
-      'judging',
-      'recognition',
-      'experience',
-      'projects',
-      'opensource',
-      'skills',
-      'education',
-      'testimonials',
-      'blog',
-      'contact',
-    ];
-    for (const id of sections) {
+    for (const id of ['paths', 'evidence', 'work', 'writing', 'contact']) {
       await expect(page.locator(`#${id} h2`)).toBeVisible();
     }
-    await expect(page.locator('#experience li h3')).toHaveCount(5);
-    await expect(page.locator('#judging .entry-list > li')).toHaveCount(11);
+    // Moved to destination pages; the home page must not render them again.
+    for (const id of ['skills', 'experience', 'judging', 'testimonials', 'education', 'projects', 'opensource']) {
+      await expect(page.locator(`#${id}`)).toHaveCount(0);
+    }
+    await expect(page.locator('dl.figures')).toHaveCount(0);
+    await expect(page.locator('figure blockquote')).toHaveCount(0);
+    await expect(page.locator('#work li')).toHaveCount(3);
+    await expect(page.locator('main')).toContainText('BLOG@CACM');
+  });
+
+  test('content removed from home still has a destination', async ({ page }) => {
+    await open(page, '/for/editors/');
+    await expect(page.locator('#judging h3, #judging h4').filter({ hasText: /Judge/ })).toHaveCount(11);
+    await open(page, '/for/hiring/');
     await expect(page.locator('#testimonials figure')).toHaveCount(4);
-    await expect(page.locator('#work .entry-list > li')).toHaveCount(caseStudyPaths.length);
+    await expect(page.locator('#experience .timeline > li')).toHaveCount(5);
+    await expect(page.locator('#education li')).toHaveCount(3);
+    await open(page, '/for/engineers/');
+    await expect(page.locator('#open-source .entry-list > li')).toHaveCount(4);
+    await expect(page.locator('#projects .entry-list > li')).toHaveCount(5);
+    await open(page, '/cv/');
+    await expect(page.locator('section[aria-labelledby="cv-skills"] dt')).toHaveCount(7);
+    await expect(page.locator('section[aria-labelledby="cv-experience"] h3')).toHaveCount(5);
+    await open(page, '/work/');
+    await expect(page.locator('main .entry-list > li')).toHaveCount(caseStudyPaths.length);
   });
 
   test('contact form posts to the Formspree endpoint', async ({ page }) => {

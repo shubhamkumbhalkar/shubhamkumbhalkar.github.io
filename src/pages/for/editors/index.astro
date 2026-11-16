@@ -1,0 +1,140 @@
+---
+import AudiencePage from '../../../components/AudiencePage.astro';
+import Section from '../../../components/Section.astro';
+import WritingList from '../../../components/WritingList.astro';
+import JudgingList from '../../../components/JudgingList.astro';
+import RecognitionList from '../../../components/RecognitionList.astro';
+import ExternalLink from '../../../components/ExternalLink.astro';
+import { education, judging, profile, profileLinks, recognition, writing } from '../../../data';
+import { writingSchemas } from '../../../lib/structured-data';
+
+const talks = recognition.featured.filter((item) => item.kind === 'talk');
+const honours = recognition.featured.filter((item) => item.kind !== 'talk');
+const certificates = judging.events
+  .filter((event) => event.link?.url.endsWith('.pdf'))
+  .map((event) => ({ event: event.title, link: event.link! }));
+const degrees = education.filter((item) => item.degree.startsWith('Master'));
+
+const sections = [
+  { label: 'Writing and research', href: '#writing' },
+  { label: 'Speaking', href: '#speaking' },
+  { label: 'Judging', href: '#judging' },
+  { label: 'Recognition', href: '#recognition' },
+  { label: 'Credentials', href: '#credentials' },
+];
+---
+
+<AudiencePage slug="editors" sections={sections} structuredData={writingSchemas()}>
+  <dl class="bio" slot="actions">
+    <div>
+      <dt>Role</dt>
+      <dd>{profile.jobTitle}, {profile.worksFor}</dd>
+    </div>
+    <div>
+      <dt>Experience</dt>
+      <dd>10+ years</dd>
+    </div>
+    <div>
+      <dt>Education</dt>
+      <dd>{degrees.map((item) => `${item.degree}, ${item.school.split(',')[0]}`).join('; ')}</dd>
+    </div>
+  </dl>
+
+  <Section id="writing" title="Writing and research" intro={writing.intro}>
+    <WritingList />
+  </Section>
+
+  <Section id="speaking" title="Speaking">
+    <RecognitionList items={talks} />
+  </Section>
+
+  <Section id="judging" title="Judging" intro={judging.intro}>
+    <JudgingList featured={3} />
+  </Section>
+
+  <Section id="recognition" title="Recognition">
+    <RecognitionList items={honours} />
+    <h3 class="subhead">Earlier achievements</h3>
+    <ul class="entry-list compact">
+      {
+        recognition.achievements.map((item) => (
+          <li>
+            <strong>{item.title}.</strong> {item.description}
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section id="credentials" title="Public credentials" intro="Profiles and documents an organizer can verify.">
+    <h3>Profiles</h3>
+    <ul class="link-grid">
+      {
+        profileLinks().map((link) => (
+          <li>
+            <ExternalLink link={link} />
+          </li>
+        ))
+      }
+    </ul>
+    <h3 class="subhead">Signed judging documents</h3>
+    <ul class="entry-list compact">
+      {
+        certificates.map((item) => (
+          <li>
+            <p class="meta">{item.event}</p>
+            <ExternalLink link={item.link} />
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+</AudiencePage>
+
+<style>
+  .bio {
+    padding: 0;
+    margin: var(--space-6) 0 0;
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .bio div {
+    display: grid;
+    gap: var(--space-1);
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-2);
+  }
+
+  .bio dt {
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+  }
+
+  .bio dd {
+    margin: 0;
+  }
+
+  @media (min-width: 640px) {
+    .bio div {
+      grid-template-columns: 8rem minmax(0, 1fr);
+      gap: var(--space-4);
+    }
+  }
+
+  .subhead {
+    margin-top: var(--space-7);
+  }
+
+  .compact > li {
+    padding: var(--space-3) 0;
+  }
+
+  .link-grid {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--space-2);
+  }
+</style>

@@ -1,0 +1,188 @@
+---
+import AudiencePage from '../../../components/AudiencePage.astro';
+import Section from '../../../components/Section.astro';
+import TestimonialList from '../../../components/TestimonialList.astro';
+import { audience, caseStudiesBySlug, education, experience, impactLine, profile } from '../../../data';
+
+const studies = caseStudiesBySlug(audience('hiring').caseStudies);
+
+const sections = [
+  { label: 'Case studies', href: '#work' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Testimonials', href: '#testimonials' },
+  { label: 'Education', href: '#education' },
+];
+---
+
+<AudiencePage slug="hiring" sections={sections}>
+  <div class="button-row" slot="actions">
+    <a class="button button-primary" href={profile.resume} download>Download resume (PDF)</a>
+    <a class="button button-secondary" href="/cv/">Printable CV</a>
+  </div>
+
+  <Section id="work" title="Production case studies" intro="Each case study states the problem, what I did and the measured result.">
+    <ol class="studies">
+      {
+        studies.map((study) => (
+          <li>
+            <p class="meta">
+              {study.organization} · {study.period}
+            </p>
+            <h3>
+              <a href={`/work/${study.slug}/`}>{study.title}</a>
+            </h3>
+            <p>{study.summary}</p>
+            {study.results.length > 0 && (
+              <dl class="results">
+                {study.results.slice(0, 3).map((result) => (
+                  <div>
+                    <dt>{result.label}</dt>
+                    <dd>{result.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+    <p class="onward"><a href="/work/">All case studies</a></p>
+  </Section>
+
+  <Section id="experience" title="Experience" intro="One measured line per role, from 2016 to now. The CV has every detail.">
+    <ol class="timeline">
+      {
+        experience.map((role) => (
+          <li>
+            <p class="timeline__period">{role.period}</p>
+            <div>
+              <h3>{role.title}</h3>
+              <p class="timeline__company">
+                {role.company} · {role.location}
+              </p>
+              <p>{impactLine(role)}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+    <p class="onward"><a href="/cv/#cv-experience">Full experience on the CV</a></p>
+  </Section>
+
+  <Section id="testimonials" title="What managers say">
+    <TestimonialList />
+  </Section>
+
+  <Section id="education" title="Education">
+    <ul class="entry-list compact">
+      {
+        education.map((item) => (
+          <li>
+            <strong>{item.degree}</strong>
+            {item.focus && `, ${item.focus}`}
+            <span class="meta-inline">
+              {' '}
+              {item.school} · {item.year}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+</AudiencePage>
+
+<style>
+  .button-row {
+    margin-bottom: 0;
+  }
+
+  .studies,
+  .timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .studies > li,
+  .timeline > li {
+    max-width: none;
+    padding: var(--space-5) 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .studies > li:first-child,
+  .timeline > li:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .studies h3 {
+    margin-bottom: var(--space-2);
+  }
+
+  .results {
+    display: grid;
+    gap: var(--space-3) var(--space-5);
+    margin: var(--space-3) 0 0;
+  }
+
+  .results div {
+    display: flex;
+    gap: var(--space-3);
+    align-items: baseline;
+  }
+
+  .results dt {
+    order: 2;
+    color: var(--color-muted);
+    font-size: var(--text-sm);
+  }
+
+  .results dd {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    min-width: 4.5rem;
+  }
+
+  .timeline h3 {
+    margin-bottom: var(--space-1);
+  }
+
+  .timeline__period {
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    margin-bottom: var(--space-2);
+  }
+
+  .timeline__company {
+    font-weight: 500;
+    margin-bottom: var(--space-2);
+  }
+
+  .timeline p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 640px) {
+    .timeline > li {
+      display: grid;
+      grid-template-columns: 10rem minmax(0, 1fr);
+      gap: var(--space-5);
+    }
+
+    .timeline__period {
+      margin: 0;
+      padding-top: 0.2rem;
+    }
+  }
+
+  .compact > li {
+    padding: var(--space-3) 0;
+  }
+
+  .meta-inline {
+    color: var(--color-muted);
+  }
+</style>

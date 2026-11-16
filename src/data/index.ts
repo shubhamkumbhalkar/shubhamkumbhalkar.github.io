@@ -1,8 +1,12 @@
 import type {
+  Audience,
+  AudienceSlug,
   CaseStudy,
   Contact,
   Education,
+  Home,
   Judging,
+  Link,
   Profile,
   Project,
   Publication,
@@ -13,10 +17,12 @@ import type {
   Testimonial,
   Writing,
 } from './types';
+import audiencesJson from './audiences.json';
 import caseStudiesJson from './case-studies.json';
 import contactJson from './contact.json';
 import educationJson from './education.json';
 import experienceJson from './experience.json';
+import homeJson from './home.json';
 import judgingJson from './judging.json';
 import opensourceJson from './opensource.json';
 import profileJson from './profile.json';
@@ -43,6 +49,27 @@ export const education: Education[] = educationJson;
 export const testimonials: Testimonial[] = testimonialsJson;
 export const contact: Contact = contactJson;
 export const caseStudies: CaseStudy[] = caseStudiesJson;
+export const home: Home = homeJson;
+export const audiences: Audience[] = audiencesJson;
+
+export function audience(slug: AudienceSlug): Audience {
+  const found = audiences.find((item) => item.slug === slug);
+  if (!found) throw new Error(`Unknown audience: ${slug}`);
+  return found;
+}
+
+export function audiencePath(slug: AudienceSlug): string {
+  return `/for/${slug}/`;
+}
+
+/** Resolves case-study slugs in order; fails the build on a typo. */
+export function caseStudiesBySlug(slugs: string[]): CaseStudy[] {
+  return slugs.map((slug) => {
+    const study = caseStudies.find((item) => item.slug === slug);
+    if (!study) throw new Error(`Unknown case study: ${slug}`);
+    return study;
+  });
+}
 
 export function formatDate(iso: string): string {
   return new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', {
@@ -51,4 +78,26 @@ export function formatDate(iso: string): string {
     day: 'numeric',
     timeZone: 'UTC',
   });
+}
+
+const profileLinkLabels: Record<string, string> = {
+  'www.linkedin.com': 'LinkedIn',
+  'github.com': 'GitHub',
+  'medium.com': 'Medium',
+  'thenucleargeeks.com': 'The Nuclear Geeks',
+  'orcid.org': 'ORCID',
+  'scholar.google.com': 'Google Scholar',
+};
+
+/** Public profiles from `profile.sameAs`, labelled for display. */
+export function profileLinks(): Link[] {
+  return profile.sameAs.map((url) => ({
+    label: profileLinkLabels[new URL(url).hostname] ?? new URL(url).hostname,
+    url,
+  }));
+}
+
+/** The first highlight with a number in it, so each role shows one measured line. */
+export function impactLine(role: Role): string {
+  return role.highlights.find((line) => /\d/.test(line)) ?? role.highlights[0] ?? '';
 }

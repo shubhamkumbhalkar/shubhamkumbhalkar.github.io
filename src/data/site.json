@@ -1,9 +1,9 @@
 {
   "nav": [
-    { "label": "Work", "href": "/#work" },
+    { "label": "Work", "href": "/work/" },
     { "label": "Writing", "href": "/writing/" },
-    { "label": "Judging", "href": "/#judging" },
-    { "label": "Experience", "href": "/#experience" },
+    { "label": "Judging", "href": "/for/editors/#judging" },
+    { "label": "Experience", "href": "/for/hiring/#experience" },
     { "label": "CV", "href": "/cv/" },
     { "label": "Contact", "href": "/#contact" }
   ],

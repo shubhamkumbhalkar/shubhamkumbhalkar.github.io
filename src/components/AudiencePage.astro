@@ -1,0 +1,120 @@
+---
+import Base from '../layouts/Base.astro';
+import OtherPaths from './OtherPaths.astro';
+import ContactBlock from './ContactBlock.astro';
+import { audience, contact, profile } from '../data';
+import type { AudienceSlug, NavItem } from '../data/types';
+
+interface Props {
+  slug: AudienceSlug;
+  /** In-page jump links, in the order the sections appear. */
+  sections: NavItem[];
+  structuredData?: Record<string, unknown>[];
+}
+
+const { slug, sections, structuredData = [] } = Astro.props;
+const page = audience(slug);
+---
+
+<Base title={`${page.title} | ${profile.name}`} description={page.metaDescription} structuredData={structuredData}>
+  <header class="audience-head">
+    <div class="container audience-head__grid">
+      <div>
+        <p class="eyebrow">For {page.label.toLowerCase()}</p>
+        <h1>{page.title}</h1>
+        <p class="lede">{page.lede}</p>
+        <slot name="actions" />
+      </div>
+      <nav class="audience-head__toc" aria-label="On this page">
+        <p class="eyebrow">On this page</p>
+        <ol>
+          {
+            sections.map((item) => (
+              <li>
+                <a href={item.href}>{item.label}</a>
+              </li>
+            ))
+          }
+        </ol>
+      </nav>
+    </div>
+  </header>
+
+  <slot />
+
+  <section class="audience-contact" aria-labelledby="audience-contact-heading">
+    <div class="container">
+      <h2 id="audience-contact-heading">Get in touch</h2>
+      <p>{contact.intro} <a href="/#contact">Use the contact form</a> or write directly.</p>
+      <ContactBlock />
+    </div>
+  </section>
+
+  <OtherPaths current={slug} />
+</Base>
+
+<style>
+  .audience-head {
+    padding: var(--space-8) 0 var(--space-7);
+    border-bottom: 3px solid var(--color-text);
+  }
+
+  .audience-head__grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .audience-head h1 {
+    max-width: 18ch;
+  }
+
+  .audience-head__toc ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: toc;
+  }
+
+  .audience-head__toc li {
+    counter-increment: toc;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .audience-head__toc a {
+    display: flex;
+    gap: var(--space-3);
+    padding: var(--space-2) 0;
+    min-height: 44px;
+    align-items: center;
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .audience-head__toc a::before {
+    content: counter(toc, decimal-leading-zero);
+    font-family: var(--font-display);
+    color: var(--color-muted);
+    min-width: 2ch;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .audience-head__toc a:hover {
+      color: var(--color-link);
+      text-decoration: underline;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .audience-head__grid {
+      grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+      gap: var(--space-7);
+      align-items: end;
+    }
+  }
+
+  .audience-contact {
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-8) 0;
+  }
+</style>

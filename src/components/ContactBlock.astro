@@ -1,0 +1,31 @@
+---
+import { contact } from '../data';
+---
+
+<ul class="contact-links">
+  <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
+  {
+    contact.links.map((link) => (
+      <li>
+        <a href={link.url} target="_blank" rel="noopener">
+          {link.label}<span class="visually-hidden"> (opens in a new tab)</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .contact-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-5);
+  }
+
+  .contact-links a {
+    display: inline-block;
+    padding: var(--space-2) 0;
+  }
+</style>
