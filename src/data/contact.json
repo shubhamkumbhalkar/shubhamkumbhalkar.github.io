@@ -1,0 +1,11 @@
+{
+  "intro": "I'm always open to discussing new opportunities, interesting projects, or collaborations.",
+  "formEndpoint": "https://formspree.io/f/xvkokgnp",
+  "directLabel": "or reach me directly",
+  "email": "shubham.kumbhalkar@gmail.com",
+  "links": [
+    { "label": "LinkedIn", "url": "https://www.linkedin.com/in/shubham-kumbhalkar/" },
+    { "label": "GitHub", "url": "https://github.com/shubhamkumbhalkar" },
+    { "label": "Blog", "url": "https://thenucleargeeks.com/author/shubhamkumbhalkar/" }
+  ]
+}

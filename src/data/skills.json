@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Languages",
+    "skills": ["Java (EE / J2EE)", "Python", "JavaScript", "TypeScript", "Rust", "GraphQL", "JPQL"]
+  },
+  {
+    "name": "AI Tools",
+    "skills": ["Amazon Q", "Claude Code", "Kiro", "GitHub Copilot", "LangChain", "Wasabi"]
+  },
+  {
+    "name": "Frameworks",
+    "skills": ["Spring Boot", "Hibernate", "ReactJS", "Spring MVC", "Spring Security", "Node.js"]
+  },
+  {
+    "name": "Cloud & Infrastructure",
+    "skills": ["AWS", "S3", "Lambda", "EKS", "CDK", "Terraform", "CloudWatch", "IAM", "Docker"]
+  },
+  {
+    "name": "Databases",
+    "skills": ["MySQL", "PostgreSQL", "DynamoDB", "Cassandra", "Oracle 12C", "MongoDB"]
+  },
+  {
+    "name": "Message Queues",
+    "skills": ["Kafka", "RabbitMQ", "ZooKeeper", "JMS", "ActiveMQ"]
+  },
+  {
+    "name": "Tools & DevOps",
+    "skills": ["Maven", "Jenkins", "Splunk", "Kibana", "Nginx", "OpsGenie", "Optimizely"]
+  }
+]

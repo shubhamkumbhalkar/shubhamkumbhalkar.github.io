@@ -1,0 +1,23 @@
+---
+import { site } from '../data';
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <p>{site.footer}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-6) 0;
+    margin-top: var(--space-8);
+    color: var(--color-muted);
+    font-size: var(--text-sm);
+  }
+
+  .site-footer p {
+    margin: 0;
+  }
+</style>

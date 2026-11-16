@@ -1,0 +1,128 @@
+---
+import Base from '../../layouts/Base.astro';
+import Figures from '../../components/Figures.astro';
+import ExternalLink from '../../components/ExternalLink.astro';
+import { caseStudies, profile } from '../../data';
+import type { CaseStudy } from '../../data/types';
+
+export function getStaticPaths() {
+  return caseStudies.map((study) => ({ params: { slug: study.slug }, props: { study } }));
+}
+
+interface Props {
+  study: CaseStudy;
+}
+
+const { study } = Astro.props;
+---
+
+<Base title={`${study.title} | ${profile.name}`} description={study.summary}>
+  <article class="container case-study">
+    <header class="case-study__head">
+      <p class="eyebrow"><a href="/#work">Selected work</a></p>
+      <h1>{study.title}</h1>
+      <p class="lede">{study.summary}</p>
+    </header>
+
+    <section aria-labelledby="context-heading">
+      <h2 id="context-heading">Context</h2>
+      <dl class="case-study__facts">
+        <div>
+          <dt>Organization</dt>
+          <dd>{study.organization}</dd>
+        </div>
+        <div>
+          <dt>Role</dt>
+          <dd>{study.role}</dd>
+        </div>
+        <div>
+          <dt>Period</dt>
+          <dd>{study.period}</dd>
+        </div>
+        <div>
+          <dt>Stack</dt>
+          <dd>{study.stack.join(', ')}</dd>
+        </div>
+      </dl>
+    </section>
+
+    {
+      study.results.length > 0 && (
+        <section aria-labelledby="results-heading">
+          <h2 id="results-heading">Measured results</h2>
+          <Figures items={study.results} label="Measured results" />
+        </section>
+      )
+    }
+
+    {
+      study.sections.map((section, index) => (
+        <section aria-labelledby={`section-${index}`}>
+          <h2 id={`section-${index}`}>{section.heading}</h2>
+          <ul>
+            {section.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+
+    {
+      study.links.length > 0 && (
+        <p>
+          {study.links.map((link) => (
+            <ExternalLink link={link} />
+          ))}
+        </p>
+      )
+    }
+
+    <p><a href="/#work">Back to selected work</a></p>
+  </article>
+</Base>
+
+<style>
+  .case-study {
+    padding-top: var(--space-8);
+    max-width: 56rem;
+  }
+
+  .case-study__head {
+    margin-bottom: var(--space-6);
+  }
+
+  .case-study section {
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-6) 0 var(--space-2);
+  }
+
+  .case-study section > ul {
+    padding-left: var(--space-5);
+  }
+
+  .case-study section > ul li + li {
+    margin-top: var(--space-2);
+  }
+
+  .case-study__facts {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+  }
+
+  .case-study__facts dt {
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+  }
+
+  .case-study__facts dd {
+    margin: 0;
+  }
+
+  @media (min-width: 640px) {
+    .case-study__facts {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

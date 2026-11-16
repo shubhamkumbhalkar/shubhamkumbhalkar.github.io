@@ -1,0 +1,30 @@
+{
+  "intro": "I write about software engineering, distributed systems, and technology.",
+  "profiles": [
+    { "label": "Medium", "url": "https://medium.com/@shubham.kumbhalkar" },
+    { "label": "The Nuclear Geeks", "url": "https://thenucleargeeks.com/author/shubhamkumbhalkar/" }
+  ],
+  "articles": [
+    {
+      "title": "AI Agents Move From Code Generation to System-Level Engineering",
+      "venue": "Medium",
+      "status": "Published",
+      "published": "2026-11-10",
+      "url": "https://medium.com/@shubham.kumbhalkar/ai-agents-move-from-code-generation-to-system-level-engineering-4484f50ab66c"
+    },
+    {
+      "title": "The Real Cost of AI Code Shows Up 30 Days Later",
+      "venue": "BLOG@CACM",
+      "status": "Published",
+      "published": "2026-11-04",
+      "url": "https://cacm.acm.org/blogcacm/the-real-cost-of-ai-code-shows-up-30-days-later/"
+    },
+    {
+      "title": "I Automated My Job Search Across 7 Job Boards",
+      "venue": "dev.to",
+      "status": "Published",
+      "summary": "A technical write-up on dev.to walking through how I built and wired together the automation behind my job search, from scraping to AI scoring to an approve-then-send workflow.",
+      "url": "https://dev.to/shubhamkumbhalkar/i-automated-my-job-search-across-7-job-boards-368e"
+    }
+  ]
+}

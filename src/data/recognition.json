@@ -1,0 +1,53 @@
+{
+  "intro": "Public recognition for technical judging and community work.",
+  "featured": [
+    {
+      "title": "USAII Judges Appreciation Feature",
+      "meta": "Public spotlight · 2026",
+      "description": "Featured by name, with title and photo, in the United States Artificial Intelligence Institute's public Judges Appreciation spotlight for the Global AI Hackathon, alongside senior industry peers.",
+      "kind": "feature",
+      "links": []
+    },
+    {
+      "title": "Signed Judging Credentials",
+      "meta": "HackMIT · InfinityX · 2026",
+      "description": "Received signed certificates and letters recognizing technical judging, including a Certificate of Mentoring & Judging from the HackMIT Co-Director and a Judge Confirmation and Appreciation Letter from InfinityX.",
+      "kind": "credential",
+      "links": [
+        { "label": "View certificate", "url": "/certificates/HackMIT-2026-Certificate-and-Letter.pdf" }
+      ]
+    },
+    {
+      "title": "Featured Alumni Speaker, Alumni Conclave 2026",
+      "meta": "St. Vincent Pallotti College · 2026",
+      "description": "Invited back by St. Vincent Pallotti College of Engineering and Technology to speak at Alumni Conclave 2026 and share my professional journey with current students. The college featured the talk publicly to its audience of 11,000+ followers.",
+      "kind": "talk",
+      "links": [
+        { "label": "On LinkedIn", "url": "https://lnkd.in/p/grkejktq" },
+        { "label": "On Instagram", "url": "https://www.instagram.com/p/DUaA1gYCUNW/" }
+      ]
+    }
+  ],
+  "achievements": [
+    {
+      "title": "National Competition Winner",
+      "description": "1st place in 'ZHEP14' on \"Project Loon: Balloon powered Internet for all\" by Google."
+    },
+    {
+      "title": "Explore 5.0 - 2nd Prize",
+      "description": "National level competition with presentation \"LI-FI: The Smart Internet\"."
+    },
+    {
+      "title": "TECHNOPATI - 2nd Position",
+      "description": "National competition based on implementation of innovative circuits."
+    },
+    {
+      "title": "ISTE Branch Head",
+      "description": "Led numerous technical events as Branch Head of Indian Society for Technical Education for two years."
+    },
+    {
+      "title": "National Service Scheme",
+      "description": "Volunteered for 2 years contributing to the Swachh Bharat Abhiyan initiative."
+    }
+  ]
+}

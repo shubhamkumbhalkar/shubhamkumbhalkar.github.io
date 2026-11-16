@@ -1,0 +1,218 @@
+[
+  {
+    "slug": "cve-security-tooling",
+    "title": "Amazon Linux CVE and security tooling",
+    "summary": "Security tooling at Amazon: auto-severity CVE tooling with security dashboard integration, and a serverless anomaly detection pipeline built on Lambda and CloudTrail.",
+    "organization": "Amazon",
+    "role": "Software Development Engineer II",
+    "period": "Jun 2024 - Present",
+    "stack": [
+      "AWS Lambda",
+      "CloudTrail",
+      "CDK"
+    ],
+    "results": [
+      {
+        "value": "30%",
+        "label": "Faster CVE resolution SLA"
+      },
+      {
+        "value": "10+",
+        "label": "Suspicious actions surfaced per month"
+      }
+    ],
+    "sections": [
+      {
+        "heading": "What I did",
+        "items": [
+          "Accelerated CVE resolution SLA by 30% with auto-severity tooling and security dashboard integration",
+          "Created serverless anomaly detection pipeline using Lambda + CloudTrail, surfacing 10+ suspicious actions/month"
+        ]
+      },
+      {
+        "heading": "In production",
+        "items": [
+          "AWS Lambda + CloudTrail pipeline surfacing 10+ suspicious actions/month across production services at Amazon."
+        ]
+      }
+    ],
+    "links": []
+  },
+  {
+    "slug": "maws-to-naws-migration",
+    "title": "Tier-1 MAWS to NAWS migration and versioned S3 work",
+    "summary": "Migration work at Amazon: a Tier-1 service moved from MAWS to NAWS with zero downtime, and 15+ services moved to versioned S3 buckets with zero customer impact.",
+    "organization": "Amazon",
+    "role": "Software Development Engineer II",
+    "period": "Jun 2024 - Present",
+    "stack": [
+      "AWS",
+      "S3",
+      "CDK"
+    ],
+    "results": [
+      {
+        "value": "Zero",
+        "label": "Downtime during the Tier-1 migration"
+      },
+      {
+        "value": "15+",
+        "label": "Services migrated to versioned S3 buckets"
+      },
+      {
+        "value": "Zero",
+        "label": "Customer impact from the S3 migration"
+      }
+    ],
+    "sections": [
+      {
+        "heading": "What I did",
+        "items": [
+          "Executed migration of a Tier-1 service from MAWS to NAWS with zero downtime",
+          "Orchestrated migration of 15+ services to versioned S3 buckets with zero customer impact"
+        ]
+      }
+    ],
+    "links": []
+  },
+  {
+    "slug": "seller-inventory-forecasting",
+    "title": "High-throughput seller inventory-transfer system",
+    "summary": "A high-throughput Amazon system managing seller inventory transfers across fulfillment-network nodes through five external APIs.",
+    "organization": "Amazon",
+    "role": "Software Development Engineer II",
+    "period": "Jun 2024 - Present",
+    "stack": [
+      "Java",
+      "AWS",
+      "Distributed Systems"
+    ],
+    "results": [
+      {
+        "value": "500K+",
+        "label": "Requests per second across 5 external APIs"
+      },
+      {
+        "value": "22%",
+        "label": "Improvement in SLA adherence"
+      }
+    ],
+    "sections": [
+      {
+        "heading": "What I did",
+        "items": [
+          "Engineered a high-throughput system handling 500K+ req/sec across 5 external APIs, improving SLA adherence by 22%"
+        ]
+      }
+    ],
+    "links": []
+  },
+  {
+    "slug": "lendingclub-auto-refinance",
+    "title": "LendingClub Auto Refinance",
+    "summary": "Back-end engineering for LendingClub's auto refinance product, including its expansion into 7 additional states and the automation around loan approvals and vehicle title verification.",
+    "organization": "LendingClub Corporation",
+    "role": "Senior Software Development Engineer",
+    "period": "Nov 2020 - Oct 2023",
+    "stack": [
+      "Java",
+      "Spring Boot",
+      "Hibernate",
+      "JPA",
+      "Maven",
+      "MySQL",
+      "Splunk",
+      "Nginx"
+    ],
+    "results": [
+      {
+        "value": "7",
+        "label": "Additional states for the Auto refinance product"
+      },
+      {
+        "value": "+$1.1M",
+        "label": "Monthly revenue from the state expansion"
+      },
+      {
+        "value": "15%",
+        "label": "Increase in loan listings"
+      },
+      {
+        "value": "150",
+        "label": "More daily Auto loan approvals"
+      },
+      {
+        "value": "60%",
+        "label": "Lower cost of vehicle title verification"
+      }
+    ],
+    "sections": [
+      {
+        "heading": "What I did",
+        "items": [
+          "Expanded Auto refinance product into 7 additional states - 15% increase in loan listings and +$1.1M monthly revenue",
+          "Designed third-party vendor integration, reducing manual input by 20% and increasing daily Auto loan approvals by 150",
+          "Implemented automated Vehicle title verification, reducing costs by 60% and time by 50%",
+          "Formulated Optimizely A/B experiment elevating Auto loan submission rate by 20%",
+          "Designed microservice for cross-selling, resulting in 20% increase in auto refinance applications"
+        ]
+      },
+      {
+        "heading": "Team",
+        "items": [
+          "Led a team of 11 engineers as Scrum Master, ensuring optimal workflow consistency"
+        ]
+      },
+      {
+        "heading": "Auto Refinance 2 credit model",
+        "items": [
+          "Enhanced credit model to persist credit attributes, leading to 30% increase in offer take rate"
+        ]
+      },
+      {
+        "heading": "What a manager said",
+        "items": [
+          "\"He was hired as the primary back-end engineer in the AutoRefi group. With minimal support, he learned a complex business spanning multiple groups and services and built new functionality along the way. His efforts have been critical to the growth of the business.\" Russell Vernick, Sr. Software Engineering Manager | Former Manager at LendingClub"
+        ]
+      }
+    ],
+    "links": []
+  },
+  {
+    "slug": "agent-skills",
+    "title": "Agent Skills collection",
+    "summary": "An open collection of reusable AI agent skills for engineers, free and MIT-licensed, installable with one command.",
+    "organization": "Open source",
+    "role": "Open-source project",
+    "period": "MIT-licensed",
+    "stack": [
+      "Agent Skills",
+      "GenAI",
+      "MIT"
+    ],
+    "results": [],
+    "sections": [
+      {
+        "heading": "What it includes",
+        "items": [
+          "Distributed-systems design review",
+          "Zero-downtime migration",
+          "GenAI production readiness",
+          "Time-series forecasting review"
+        ]
+      },
+      {
+        "heading": "How to use it",
+        "items": [
+          "Installable with one command. Source and instructions are on GitHub."
+        ]
+      }
+    ],
+    "links": [
+      {
+        "label": "View on GitHub",
+        "url": "https://github.com/shubhamkumbhalkar/skills"
+      }
+    ]
+  }
+]

@@ -1,0 +1,27 @@
+---
+import type { Project } from '../data/types';
+import ExternalLink from './ExternalLink.astro';
+
+interface Props {
+  items: Project[];
+}
+
+const { items } = Astro.props;
+---
+
+<ul class="entry-list">
+  {
+    items.map((project) => (
+      <li>
+        <h3>{project.name}</h3>
+        <p>{project.description}</p>
+        <ul class="tags" aria-label="Topics">
+          {project.tags.map((tag) => (
+            <li>{tag}</li>
+          ))}
+        </ul>
+        {project.link && <ExternalLink link={project.link} />}
+      </li>
+    ))
+  }
+</ul>

@@ -1,0 +1,11 @@
+{
+  "nav": [
+    { "label": "Work", "href": "/#work" },
+    { "label": "Writing", "href": "/writing/" },
+    { "label": "Judging", "href": "/#judging" },
+    { "label": "Experience", "href": "/#experience" },
+    { "label": "CV", "href": "/cv/" },
+    { "label": "Contact", "href": "/#contact" }
+  ],
+  "footer": "© 2026 Shubham Kumbhalkar. All rights reserved."
+}

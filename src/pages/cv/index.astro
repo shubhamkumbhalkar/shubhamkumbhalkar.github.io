@@ -1,0 +1,200 @@
+---
+import Base from '../../layouts/Base.astro';
+import ExperienceList from '../../components/ExperienceList.astro';
+import {
+  contact,
+  education,
+  formatDate,
+  judging,
+  profile,
+  publications,
+  recognition,
+  skills,
+  writing,
+} from '../../data';
+---
+
+<Base
+  title={`CV | ${profile.name}`}
+  description={`Printable CV for ${profile.name}, ${profile.jobTitle}: experience, skills, education, publications and judging.`}
+>
+  <article class="container cv">
+    <header class="cv__head">
+      <h1>{profile.name}</h1>
+      <p class="lede">{profile.jobTitle}</p>
+      <ul class="cv__contact">
+        <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
+        {
+          contact.links.map((link) => (
+            <li>
+              <a href={link.url}>{link.label}</a>
+            </li>
+          ))
+        }
+        <li><a href={profile.siteUrl}>{profile.siteUrl.replace(/^https:\/\//, '').replace(/\/$/, '')}</a></li>
+      </ul>
+      <p class="no-print">
+        <a class="button button-primary" href={profile.resume} download>Download the PDF resume</a>
+      </p>
+    </header>
+
+    <section aria-labelledby="cv-summary">
+      <h2 id="cv-summary">Summary</h2>
+      {profile.about.map((paragraph) => <p>{paragraph}</p>)}
+    </section>
+
+    <section aria-labelledby="cv-experience">
+      <h2 id="cv-experience">Experience</h2>
+      <ExperienceList />
+    </section>
+
+    <section aria-labelledby="cv-skills">
+      <h2 id="cv-skills">Technical skills</h2>
+      <dl class="cv__skills">
+        {
+          skills.map((category) => (
+            <div>
+              <dt>{category.name}</dt>
+              <dd>{category.skills.join(', ')}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    <section aria-labelledby="cv-education">
+      <h2 id="cv-education">Education</h2>
+      <ul>
+        {
+          education.map((item) => (
+            <li>
+              {item.degree}
+              {item.focus && `, ${item.focus}`}. {item.school}, {item.year}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section aria-labelledby="cv-writing">
+      <h2 id="cv-writing">Publications and articles</h2>
+      <ul>
+        {
+          publications.map((paper) => (
+            <li>
+              “{paper.title}.” {paper.venue}, {paper.year}. {paper.status}.
+            </li>
+          ))
+        }
+        {
+          writing.articles.map((article) => (
+            <li>
+              “{article.title}.” {article.venue}
+              {article.published && `, ${formatDate(article.published)}`}. {article.status}.
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section aria-labelledby="cv-judging">
+      <h2 id="cv-judging">Judging</h2>
+      <p>{judging.intro}</p>
+      <ul>
+        {
+          judging.events.map((event) => (
+            <li>
+              {event.title}. {event.meta}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section aria-labelledby="cv-recognition">
+      <h2 id="cv-recognition">Recognition and achievements</h2>
+      <ul>
+        {
+          recognition.featured.map((item) => (
+            <li>
+              {item.title}. {item.meta}
+            </li>
+          ))
+        }
+        {
+          recognition.achievements.map((item) => (
+            <li>
+              {item.title}. {item.description}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </article>
+</Base>
+
+<style>
+  .cv {
+    padding-top: var(--space-8);
+    max-width: 52rem;
+  }
+
+  .cv__head {
+    margin-bottom: var(--space-6);
+  }
+
+  .cv__contact {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-5);
+  }
+
+  .cv section {
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-6) 0 var(--space-2);
+  }
+
+  .cv section > ul {
+    padding-left: var(--space-5);
+  }
+
+  .cv__skills {
+    margin: 0;
+  }
+
+  .cv__skills div {
+    margin-bottom: var(--space-2);
+  }
+
+  .cv__skills dt {
+    font-weight: 700;
+  }
+
+  .cv__skills dd {
+    margin: 0;
+  }
+
+  @media print {
+    .cv {
+      padding-top: 0;
+      max-width: none;
+      font-size: 10.5pt;
+    }
+
+    .cv section {
+      break-inside: auto;
+      padding-top: 12pt;
+    }
+
+    .cv h2,
+    .cv h3 {
+      break-after: avoid;
+    }
+
+    .cv a {
+      text-decoration: none;
+    }
+  }
+</style>

@@ -1,0 +1,66 @@
+---
+import Base from '../../layouts/Base.astro';
+import Section from '../../components/Section.astro';
+import WritingList from '../../components/WritingList.astro';
+import ExternalLink from '../../components/ExternalLink.astro';
+import { profile, recognition, writing } from '../../data';
+import { writingSchemas } from '../../lib/structured-data';
+
+const talks = recognition.featured.filter((item) => item.kind === 'talk');
+---
+
+<Base
+  title={`Writing and research | ${profile.name}`}
+  description="Articles, research papers and talks by Shubham Kumbhalkar, with venue, date and publication status."
+  structuredData={writingSchemas()}
+>
+  <header class="container page-head">
+    <p class="eyebrow">Writing</p>
+    <h1>Writing and research</h1>
+    <p class="lede">{writing.intro}</p>
+  </header>
+
+  <Section id="articles" title="Articles">
+    <WritingList include="articles" />
+  </Section>
+
+  <Section id="papers" title="Research papers">
+    <WritingList include="papers" />
+  </Section>
+
+  <Section id="talks" title="Talks">
+    <ul class="entry-list">
+      {
+        talks.map((talk) => (
+          <li>
+            <h3>{talk.title}</h3>
+            <p class="meta">{talk.meta}</p>
+            <p>{talk.description}</p>
+            {talk.links.map((link) => (
+              <ExternalLink link={link} />
+            ))}
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section id="elsewhere" title="Elsewhere">
+    <ul class="entry-list">
+      {
+        writing.profiles.map((link) => (
+          <li>
+            <ExternalLink link={link} />
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+</Base>
+
+<style>
+  .page-head {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-6);
+  }
+</style>

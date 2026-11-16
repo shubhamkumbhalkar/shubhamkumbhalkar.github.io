@@ -1,0 +1,21 @@
+---
+import type { Highlight } from '../data/types';
+
+interface Props {
+  items: Highlight[];
+  label: string;
+}
+
+const { items, label } = Astro.props;
+---
+
+<dl class="figures" aria-label={label}>
+  {
+    items.map((item) => (
+      <div>
+        <dt>{item.label}</dt>
+        <dd>{item.value}</dd>
+      </div>
+    ))
+  }
+</dl>

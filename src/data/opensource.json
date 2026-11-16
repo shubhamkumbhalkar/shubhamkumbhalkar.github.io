@@ -1,0 +1,29 @@
+{
+  "intro": "Public tools and writing I have shared with the developer community, free and MIT-licensed.",
+  "items": [
+    {
+      "name": "Application Autofill",
+      "description": "A browser userscript that fills Greenhouse, Lever, and Ashby job-application forms from a local profile, then leaves the final submit to you. Review-first by design, with no auto-submit and no scraping.",
+      "tags": ["JavaScript", "Userscript", "MIT"],
+      "link": { "label": "View on GitHub", "url": "https://github.com/shubhamkumbhalkar/application-autofill" }
+    },
+    {
+      "name": "Agent Skills Collection",
+      "description": "An open collection of reusable AI agent skills for engineers: distributed-systems design review, zero-downtime migration, GenAI production readiness, and time-series forecasting review. Installable with one command.",
+      "tags": ["Agent Skills", "GenAI", "MIT"],
+      "link": { "label": "View on GitHub", "url": "https://github.com/shubhamkumbhalkar/skills" }
+    },
+    {
+      "name": "Lever Auto-Apply",
+      "description": "Open-source job-application automation with AI resume scoring and a hybrid CAPTCHA workflow. Shared on GitHub for other job seekers to use and extend.",
+      "tags": ["Python", "Claude AI", "MIT"],
+      "link": { "label": "View on GitHub", "url": "https://github.com/shubhamkumbhalkar/lever-auto-apply" }
+    },
+    {
+      "name": "\"I Automated My Job Search Across 7 Job Boards\"",
+      "description": "A technical write-up on dev.to walking through how I built and wired together the automation behind my job search, from scraping to AI scoring to an approve-then-send workflow.",
+      "tags": ["dev.to", "Automation", "Writing"],
+      "link": { "label": "Read on dev.to", "url": "https://dev.to/shubhamkumbhalkar/i-automated-my-job-search-across-7-job-boards-368e" }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+---
+import { experience } from '../data';
+---
+
+<ol class="entry-list experience">
+  {
+    experience.map((role) => (
+      <li>
+        <p class="meta">{role.period}</p>
+        <h3>{role.title}</h3>
+        <p class="experience__company">
+          {role.company} | {role.location}
+        </p>
+        <p class="meta">{role.stack.join(', ')}</p>
+        <ul>
+          {role.highlights.map((highlight) => (
+            <li>{highlight}</li>
+          ))}
+        </ul>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .experience__company {
+    font-weight: 500;
+    margin-bottom: var(--space-1);
+  }
+
+  .experience ul {
+    padding-left: var(--space-5);
+  }
+
+  .experience ul li + li {
+    margin-top: var(--space-1);
+  }
+</style>

@@ -1,0 +1,300 @@
+---
+import Base from '../layouts/Base.astro';
+import Section from '../components/Section.astro';
+import Figures from '../components/Figures.astro';
+import CaseStudyList from '../components/CaseStudyList.astro';
+import WritingList from '../components/WritingList.astro';
+import JudgingList from '../components/JudgingList.astro';
+import ExperienceList from '../components/ExperienceList.astro';
+import ProjectList from '../components/ProjectList.astro';
+import ExternalLink from '../components/ExternalLink.astro';
+import ContactForm from '../components/ContactForm.astro';
+import {
+  contact,
+  education,
+  judging,
+  openSource,
+  profile,
+  projects,
+  recognition,
+  skills,
+  testimonials,
+  writing,
+} from '../data';
+import { writingSchemas } from '../lib/structured-data';
+---
+
+<Base
+  title={`${profile.name} | ${profile.jobTitle}`}
+  description={profile.metaDescription}
+  structuredData={writingSchemas()}
+>
+  <section class="intro" aria-labelledby="intro-heading">
+    <div class="container intro__grid">
+      <div>
+        <p class="eyebrow">{profile.greeting}</p>
+        <h1 id="intro-heading">{profile.name}</h1>
+        <p class="intro__title">{profile.jobTitle}</p>
+        <p class="lede">{profile.heroSummary}</p>
+        <p class="meta">{profile.focusAreas.join(' · ')}</p>
+        <div class="button-row">
+          <a class="button button-primary" href="#contact">Get In Touch</a>
+          <a class="button button-secondary" href="#writing">Read my work</a>
+          <a class="button button-secondary" href={profile.resume} download>Download Resume</a>
+        </div>
+      </div>
+      <picture class="intro__photo">
+        <source srcset={profile.headshot.webp} type="image/webp" />
+        <img
+          src={profile.headshot.png}
+          alt={profile.headshot.alt}
+          width={profile.headshot.width}
+          height={profile.headshot.height}
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </picture>
+    </div>
+    <div class="container">
+      <Figures items={profile.highlights} label="Career highlights" />
+    </div>
+  </section>
+
+  <Section id="about" title="About Me">
+    {profile.about.map((paragraph) => <p>{paragraph}</p>)}
+  </Section>
+
+  <Section id="work" title="Selected work">
+    <CaseStudyList />
+  </Section>
+
+  <Section id="writing" title="Writing and research">
+    <WritingList />
+    <p><a href="/writing/">All writing, research and talks</a></p>
+  </Section>
+
+  <Section id="judging" title="Judging & Community Service" intro={judging.intro}>
+    <JudgingList />
+  </Section>
+
+  <Section id="recognition" title="Recognition" intro={recognition.intro}>
+    <ul class="entry-list">
+      {
+        recognition.featured.map((item) => (
+          <li>
+            <h3>{item.title}</h3>
+            <p class="meta">{item.meta}</p>
+            <p>{item.description}</p>
+            {item.links.map((link) => (
+              <ExternalLink link={link} />
+            ))}
+          </li>
+        ))
+      }
+    </ul>
+    <h3 class="subhead">Achievements</h3>
+    <ul class="entry-list">
+      {
+        recognition.achievements.map((item) => (
+          <li>
+            <h4>{item.title}</h4>
+            <p>{item.description}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section id="experience" title="Experience">
+    <ExperienceList />
+  </Section>
+
+  <Section id="projects" title="Projects">
+    <ProjectList items={projects} />
+  </Section>
+
+  <Section id="opensource" title="Open Source" intro={openSource.intro}>
+    <ProjectList items={openSource.items} />
+  </Section>
+
+  <Section id="skills" title="Technical Skills">
+    <dl class="skills">
+      {
+        skills.map((category) => (
+          <div>
+            <dt>{category.name}</dt>
+            <dd>{category.skills.join(', ')}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </Section>
+
+  <Section id="education" title="Education">
+    <ul class="entry-list">
+      {
+        education.map((item) => (
+          <li>
+            <p class="meta">{item.year}</p>
+            <h3>{item.degree}</h3>
+            <p>{item.school}</p>
+            {item.focus && <p class="meta">{item.focus}</p>}
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section id="testimonials" title="What People Say">
+    <ul class="entry-list">
+      {
+        testimonials.map((item) => (
+          <li>
+            <figure class="quote">
+              <blockquote>
+                <p>“{item.quote}”</p>
+              </blockquote>
+              <figcaption>
+                <strong>{item.name}</strong>
+                <span>{item.role}</span>
+              </figcaption>
+            </figure>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section id="blog" title="Blog & Thought Leadership" intro={writing.intro}>
+    <div class="button-row">
+      {
+        writing.profiles.map((profileLink) => (
+          <a class="button button-secondary" href={profileLink.url} target="_blank" rel="noopener">
+            {profileLink.label}
+            <span aria-hidden="true">&nbsp;→</span>
+          </a>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section id="contact" title="Get In Touch" intro={contact.intro}>
+    <ContactForm />
+    <p class="meta">{contact.directLabel}</p>
+    <ul class="contact-links">
+      <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
+      {
+        contact.links.map((link) => (
+          <li>
+            <a href={link.url} target="_blank" rel="noopener">
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+</Base>
+
+<style>
+  .intro {
+    padding: var(--space-8) 0 var(--space-6);
+  }
+
+  .intro__grid {
+    display: grid;
+    gap: var(--space-6);
+    align-items: center;
+  }
+
+  .intro__title {
+    font-size: var(--text-xl);
+    font-family: var(--font-display);
+    margin-bottom: var(--space-4);
+  }
+
+  .intro__photo img {
+    width: min(100%, 18rem);
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: var(--radius);
+  }
+
+  @media (min-width: 900px) {
+    .intro__grid {
+      grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+    }
+
+    .intro__photo img {
+      margin-left: auto;
+    }
+  }
+
+  .subhead {
+    margin-top: var(--space-7);
+  }
+
+  h4 {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin: 0 0 var(--space-2);
+  }
+
+  .skills {
+    margin: 0;
+  }
+
+  .skills div {
+    padding: var(--space-3) 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .skills div:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .skills dt {
+    font-weight: 700;
+  }
+
+  .skills dd {
+    margin: 0;
+    max-width: var(--measure);
+  }
+
+  .quote {
+    margin: 0;
+  }
+
+  .quote blockquote {
+    margin: 0 0 var(--space-3);
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    line-height: 1.5;
+  }
+
+  .quote figcaption {
+    display: grid;
+  }
+
+  .quote figcaption span {
+    color: var(--color-muted);
+    font-size: var(--text-sm);
+  }
+
+  .contact-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-5);
+  }
+
+  .contact-links a {
+    display: inline-block;
+    padding: var(--space-2) 0;
+  }
+</style>

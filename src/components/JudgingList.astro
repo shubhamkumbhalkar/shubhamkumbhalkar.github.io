@@ -1,0 +1,19 @@
+---
+import { judging } from '../data';
+import ExternalLink from './ExternalLink.astro';
+import Figures from './Figures.astro';
+---
+
+<Figures items={judging.stats} label="Judging at a glance" />
+<ul class="entry-list">
+  {
+    judging.events.map((event) => (
+      <li>
+        <h3>{event.title}</h3>
+        <p class="meta">{event.meta}</p>
+        <p>{event.description}</p>
+        {event.link && <ExternalLink link={event.link} />}
+      </li>
+    ))
+  }
+</ul>

@@ -1,0 +1,45 @@
+---
+import { formatDate, publications, writing } from '../data';
+import ExternalLink from './ExternalLink.astro';
+
+interface Props {
+  include?: 'all' | 'articles' | 'papers';
+}
+
+const { include = 'all' } = Astro.props;
+const articles = include === 'papers' ? [] : writing.articles;
+const papers = include === 'articles' ? [] : publications;
+---
+
+<ul class="entry-list">
+  {
+    articles.map((article) => (
+      <li>
+        <p class="meta">
+          {article.venue} · {article.status}
+          {article.published && (
+            <>
+              {' · '}
+              <time datetime={article.published}>{formatDate(article.published)}</time>
+            </>
+          )}
+        </p>
+        <h3>{article.title}</h3>
+        {article.summary && <p>{article.summary}</p>}
+        <ExternalLink link={{ label: `Read on ${article.venue}`, url: article.url }} />
+      </li>
+    ))
+  }
+  {
+    papers.map((paper) => (
+      <li>
+        <p class="meta">
+          {paper.label} · {paper.venue} · {paper.year} · {paper.status}
+        </p>
+        <h3>{paper.title}</h3>
+        <p>{paper.summary}</p>
+        {paper.link && <ExternalLink link={paper.link} />}
+      </li>
+    ))
+  }
+</ul>

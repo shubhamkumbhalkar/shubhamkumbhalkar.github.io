@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Lever Auto-Apply",
+    "description": "AI-powered job application automation with Claude ATS scoring and hybrid CAPTCHA workflow. Open source on GitHub.",
+    "tags": ["Python", "Claude AI", "Automation"],
+    "link": { "label": "View on GitHub", "url": "https://github.com/shubhamkumbhalkar/lever-auto-apply" }
+  },
+  {
+    "name": "Serverless Anomaly Detection",
+    "description": "AWS Lambda + CloudTrail pipeline surfacing 10+ suspicious actions/month across production services at Amazon.",
+    "tags": ["AWS Lambda", "CloudTrail", "CDK"]
+  },
+  {
+    "name": "Team AI Chatbot",
+    "description": "Built and deployed an AI chatbot consolidating runbooks, wikis, and on-call guidance - reducing operational lookup time.",
+    "tags": ["Python", "AI/ML", "AWS"]
+  },
+  {
+    "name": "Hawk-Aide Application",
+    "description": "Web-based student resource management app with panic keys for safety. Designed class diagrams and ER-diagrams.",
+    "tags": ["Spring MVC", "MySQL", "Bootstrap"],
+    "link": { "label": "View on GitHub", "url": "https://github.com/shubhamkumbhalkar/HawkAide" }
+  },
+  {
+    "name": "Smart-Portables",
+    "description": "Enterprise retailer web application with optimized SQL scripts and Google Visualization integration.",
+    "tags": ["JSP", "MongoDB", "JavaScript"]
+  },
+  {
+    "name": "High-Throughput API Gateway",
+    "description": "Engineered system handling 500K+ req/sec across 5 external APIs, improving SLA adherence by 22%.",
+    "tags": ["Java", "AWS", "Distributed Systems"]
+  }
+]

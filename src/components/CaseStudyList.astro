@@ -1,0 +1,19 @@
+---
+import { caseStudies } from '../data';
+---
+
+<ul class="entry-list">
+  {
+    caseStudies.map((study) => (
+      <li>
+        <p class="meta">
+          {study.organization} · {study.period}
+        </p>
+        <h3>
+          <a href={`/work/${study.slug}/`}>{study.title}</a>
+        </h3>
+        <p>{study.summary}</p>
+      </li>
+    ))
+  }
+</ul>

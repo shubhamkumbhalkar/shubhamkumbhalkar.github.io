@@ -1,0 +1,74 @@
+{
+  "intro": "Invited repeatedly across 2025 and 2026 to judge hackathons, AI competitions, and startup pitch events, evaluating the work of student builders and early-stage founders on innovation, technical depth, and real-world impact.",
+  "stats": [
+    { "value": "11", "label": "Events judged" },
+    { "value": "90+", "label": "Countries reached" },
+    { "value": "2", "label": "Formats: in-person + virtual" },
+    { "value": "’25–’26", "label": "Judging span" }
+  ],
+  "events": [
+    {
+      "title": "Mentor & Judge — HackMIT 2026 @ MIT",
+      "meta": "In-person · MIT · 1,000+ students · Sep 2026",
+      "description": "Invited as a mentor and judge at HackMIT 2026, held on campus at the Massachusetts Institute of Technology, one of the largest and most competitive student hackathons globally with 1,000+ students from 200+ colleges. Mentored teams across technical domains and evaluated final projects on innovation, technical execution, and feasibility, recognized with a signed Certificate of Mentoring & Judging from the HackMIT Co-Director.",
+      "link": { "label": "View certificate", "url": "/certificates/HackMIT-2026-Certificate-and-Letter.pdf" }
+    },
+    {
+      "title": "Judge — Frontier Cascadia @ UW Foster",
+      "meta": "In-person · Seattle · 50+ teams · Sep 2026",
+      "description": "Invited in-person judge at Frontier Cascadia, hosted at the University of Washington, Foster School of Business. Evaluated 50+ student teams (200+ students) across preliminary and final rounds, serving on a 12-judge panel alongside principal engineers, startup founders, and established industry leaders. Assessed product execution, technical feasibility, scalability, and business defensibility.",
+      "link": { "label": "View event", "url": "https://frontiercascadia.org/" }
+    },
+    {
+      "title": "Judge — USAII Global AI Hackathon 2026",
+      "meta": "Virtual · 90+ countries · Jun 2026",
+      "description": "Core judge among approximately 80 judges for the United States Artificial Intelligence Institute (USAII) Global AI Hackathon, a fully virtual competition drawing student teams from 90+ countries. Scored up to 10 assigned teams on Devpost against a structured five-criterion rubric (problem understanding, AI reasoning, solution design, impact, and responsible AI). Featured by name in USAII's public Judges Appreciation spotlight, alongside senior industry peers.",
+      "link": { "label": "View event", "url": "https://aihackathon.usaii.org" }
+    },
+    {
+      "title": "Judge & Mentor — Decision Grade AI @ SF Tech Week",
+      "meta": "In-person · San Francisco · 650+ attendees · Oct 2026",
+      "description": "Judge and mentor at the Decision Grade AI buildathon during San Francisco Tech Week, evaluating team projects on technical depth and real-world impact before a 650+ attendee audience."
+    },
+    {
+      "title": "Judge — All You Can Do With AI (UT Dallas)",
+      "meta": "Virtual · UT Dallas · Oct 2026",
+      "description": "Hackathon judge for the University of Texas at Dallas \"All You Can Do With AI\" competition, scoring submissions on Devpost against the event rubric."
+    },
+    {
+      "title": "Judge — InfinityX Global Hackathon 2K26",
+      "meta": "Virtual · ML/AI & Web · Sep 2026",
+      "description": "Technical judge for the Machine Learning / AI and Web tracks, evaluating submissions from a global participant pool through asynchronous review.",
+      "link": { "label": "View certificate", "url": "/certificates/InfinityX-Judge-Confirmation.pdf" }
+    },
+    {
+      "title": "Judge — TechCommons Hacks V2",
+      "meta": "Virtual · Hackathon · 2026",
+      "description": "Invited hackathon judge assessing projects on technical execution, innovation, and real-world impact.",
+      "link": { "label": "View event", "url": "https://techcommons-hacks.devpost.com/" }
+    },
+    {
+      "title": "Judge — AI Demo Day 4",
+      "meta": "Virtual · Apr 2026",
+      "description": "Invited panel judge evaluating finalist presentations across AI, design, and technology, providing expert feedback to emerging teams.",
+      "link": { "label": "View event", "url": "https://luma.com/ai-demo-day-4" }
+    },
+    {
+      "title": "Judge — Vibe Awards (Venture Miner)",
+      "meta": "Virtual · Async · Feb 2026",
+      "description": "Judge for the Vibe Awards, evaluating projects pitched live at Vibe Demo Days through asynchronous review across defined tracks.",
+      "link": { "label": "View event", "url": "https://luma.com/vibe-awards-feb" }
+    },
+    {
+      "title": "Judge — Startup Pitch Panel (OJ Ventures)",
+      "meta": "Virtual · Venture pitch · Jan 2026",
+      "description": "Panel judge evaluating early-stage founder pitches, delivering live feedback and Q&A alongside a four-judge panel."
+    },
+    {
+      "title": "Judge — Vibe Pitch 8 (Venture Miner)",
+      "meta": "Virtual · Live pitch · Dec 2025",
+      "description": "Live judge evaluating founder pitches during a Vibe Demo Day pitch session.",
+      "link": { "label": "View organizer", "url": "https://ventureminer.com/" }
+    }
+  ]
+}

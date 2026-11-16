@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import { profile } from '../data';
+---
+
+<Base title={`Page not found | ${profile.name}`} description="This page does not exist.">
+  <div class="container not-found">
+    <h1>Page not found</h1>
+    <p>This page does not exist. Try the <a href="/">home page</a> or the <a href="/writing/">writing</a> page.</p>
+  </div>
+</Base>
+
+<style>
+  .not-found {
+    padding-top: var(--space-8);
+  }
+</style>

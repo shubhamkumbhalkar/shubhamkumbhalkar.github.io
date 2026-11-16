@@ -1,0 +1,30 @@
+---
+import type { Link } from '../data/types';
+
+interface Props {
+  link: Link;
+}
+
+const { link } = Astro.props;
+const isExternal = /^https?:\/\//.test(link.url);
+const isDocument = link.url.endsWith('.pdf');
+const opensNewTab = isExternal || isDocument;
+---
+
+<a
+  class="entry-link"
+  href={link.url}
+  {...opensNewTab ? { target: '_blank', rel: 'noopener' } : {}}
+>
+  {link.label}<span aria-hidden="true"> →</span>
+  {opensNewTab && <span class="visually-hidden"> (opens in a new tab)</span>}
+</a>
+
+<style>
+  .entry-link {
+    display: inline-block;
+    font-weight: 500;
+    margin-right: var(--space-4);
+    padding: var(--space-1) 0;
+  }
+</style>

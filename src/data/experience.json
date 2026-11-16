@@ -1,0 +1,75 @@
+[
+  {
+    "title": "Software Development Engineer II",
+    "company": "Amazon",
+    "location": "Greater Seattle Area, WA",
+    "period": "Jun 2024 - Present",
+    "stack": ["Java", "Python", "TypeScript", "AWS CDK", "Rust", "JPA", "Maven", "React", "Node"],
+    "highlights": [
+      "Architected a scalable multi-unit ordering solution, cutting merchant costs by 40% and driving higher retention",
+      "Reduced inventory shrinkage by 45% via batch ingestion for ULT virtual receiving, cutting scan time by 32%",
+      "Engineered a high-throughput system handling 500K+ req/sec across 5 external APIs, improving SLA adherence by 22%",
+      "Executed migration of a Tier-1 service from MAWS to NAWS with zero downtime",
+      "Orchestrated migration of 15+ services to versioned S3 buckets with zero customer impact",
+      "Integrated CloudWatch alarms via CDK across 5 serverless applications, reducing MTTD by 65%",
+      "Created serverless anomaly detection pipeline using Lambda + CloudTrail, surfacing 10+ suspicious actions/month",
+      "Accelerated CVE resolution SLA by 30% with auto-severity tooling and security dashboard integration",
+      "Built and deployed a team AI chatbot consolidating runbooks, wikis, and on-call guidance",
+      "Mentored 2 engineers to deliver a regional forecasting initiative, reducing cost by 10%"
+    ]
+  },
+  {
+    "title": "Senior Software Development Engineer",
+    "company": "LendingClub Corporation",
+    "location": "San Francisco Bay Area, CA",
+    "period": "Nov 2020 - Oct 2023",
+    "stack": ["Java", "Spring Boot", "Hibernate", "JPA", "Maven", "MySQL", "Splunk", "Nginx"],
+    "highlights": [
+      "Enhanced credit model to persist credit attributes, leading to 30% increase in offer take rate",
+      "Designed third-party vendor integration, reducing manual input by 20% and increasing daily Auto loan approvals by 150",
+      "Expanded Auto refinance product into 7 additional states - 15% increase in loan listings and +$1.1M monthly revenue",
+      "Led a team of 11 engineers as Scrum Master, ensuring optimal workflow consistency",
+      "Implemented automated Vehicle title verification, reducing costs by 60% and time by 50%",
+      "Formulated Optimizely A/B experiment elevating Auto loan submission rate by 20%",
+      "Designed microservice for cross-selling, resulting in 20% increase in auto refinance applications"
+    ]
+  },
+  {
+    "title": "Software Engineer",
+    "company": "Harvest Savings and Wealth Technology Solutions",
+    "location": "San Francisco, CA",
+    "period": "Aug 2019 - Nov 2020",
+    "stack": ["Java", "Spring", "Hibernate", "JPA", "Maven", "MySQL", "Docker", "JMeter"],
+    "highlights": [
+      "Developed Mock-Bank - automated file delivery and consumption application replacing bank's core system",
+      "Engineered API-Docs, an interactive demonstration tool simplifying sales processes",
+      "Orchestrated Spring Boot microservices in Docker containers and EC2 using Jenkins",
+      "Conducted penetration tests using OWASP-ZAP across all environments",
+      "Architected comprehensive load testing on API infrastructure using JMeter"
+    ]
+  },
+  {
+    "title": "Software Engineering Intern",
+    "company": "Queens and Future Queens",
+    "location": "Plano, TX",
+    "period": "Jun 2018 - Jun 2019",
+    "stack": ["J2EE", "MySQL", "JDBC", "Spring MVC", "Maven", "Hibernate"],
+    "highlights": [
+      "Developed Carousel display and recommendation engine for E-commerce website",
+      "Increased user traffic by 15% through bug analysis and fixes",
+      "Engineered RESTful Web Services for seamless JSON data transfer between interfaces"
+    ]
+  },
+  {
+    "title": "Software Engineer",
+    "company": "Techno Cronies Software Solutions",
+    "location": "Nagpur, India",
+    "period": "Jun 2016 - Jun 2017",
+    "stack": ["Java", "HTML5", "Hibernate", "CSS3", "JavaScript", "MySQL", "Bootstrap"],
+    "highlights": [
+      "Improved Java application performance by optimizing server calls, reducing response time by 20%",
+      "Directed a technical team of two, ensuring source code adherence to standards",
+      "Implemented automation solutions saving 15 weekly labor-hours"
+    ]
+  }
+]

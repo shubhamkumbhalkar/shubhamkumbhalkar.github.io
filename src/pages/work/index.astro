@@ -1,0 +1,21 @@
+---
+import Base from '../../layouts/Base.astro';
+import CaseStudyList from '../../components/CaseStudyList.astro';
+import { profile } from '../../data';
+---
+
+<Base
+  title={`Selected work | ${profile.name}`}
+  description="Case studies from Shubham Kumbhalkar's work at Amazon, LendingClub and in open source."
+>
+  <div class="container work">
+    <h1>Selected work</h1>
+    <CaseStudyList />
+  </div>
+</Base>
+
+<style>
+  .work {
+    padding-top: var(--space-8);
+  }
+</style>
