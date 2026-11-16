@@ -1,5 +1,7 @@
 ---
 import { profile, site } from '../data';
+
+const current = Astro.url.pathname;
 ---
 
 <header class="site-header">
@@ -10,7 +12,9 @@ import { profile, site } from '../data';
         {
           site.nav.map((item) => (
             <li>
-              <a href={item.href}>{item.label}</a>
+              <a href={item.href} aria-current={item.href === current ? 'page' : undefined}>
+                {item.label}
+              </a>
             </li>
           ))
         }
@@ -58,6 +62,12 @@ import { profile, site } from '../data';
     color: var(--color-text);
     text-decoration: none;
     font-weight: 500;
+  }
+
+  .site-nav a[aria-current='page'] {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3em;
   }
 
   @media (hover: hover) and (pointer: fine) {

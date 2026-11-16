@@ -1,0 +1,70 @@
+---
+import AudiencePage from '../../../components/AudiencePage.astro';
+import Section from '../../../components/Section.astro';
+import ProjectList from '../../../components/ProjectList.astro';
+import WritingList from '../../../components/WritingList.astro';
+import { audience, caseStudiesBySlug, contact, openSource, projects } from '../../../data';
+import { writingSchemas } from '../../../lib/structured-data';
+
+const studies = caseStudiesBySlug(audience('engineers').caseStudies);
+const openSourceNames = new Set(openSource.items.map((item) => item.name));
+const otherProjects = projects.filter((item) => !openSourceNames.has(item.name));
+const github = contact.links.find((link) => link.label === 'GitHub');
+
+const sections = [
+  { label: 'Open source', href: '#open-source' },
+  { label: 'Technical writing', href: '#writing' },
+  { label: 'Case studies', href: '#case-studies' },
+  { label: 'Other projects', href: '#projects' },
+];
+---
+
+<AudiencePage slug="engineers" sections={sections} structuredData={writingSchemas()}>
+  <div class="button-row" slot="actions">
+    {
+      github && (
+        <a class="button button-primary" href={github.url} target="_blank" rel="noopener">
+          GitHub profile<span class="visually-hidden"> (opens in a new tab)</span>
+        </a>
+      )
+    }
+    <a class="button button-secondary" href="/cv/#cv-skills">Technical skills</a>
+  </div>
+
+  <Section id="open-source" title="Open source" intro={openSource.intro}>
+    <ProjectList items={openSource.items} />
+  </Section>
+
+  <Section id="writing" title="Technical writing">
+    <WritingList include="articles" />
+    <p class="onward"><a href="/writing/">All writing, research and talks</a></p>
+  </Section>
+
+  <Section id="case-studies" title="Case studies" intro="How production systems and the open-source collection were built, with measured results where they exist.">
+    <ol class="entry-list">
+      {
+        studies.map((study) => (
+          <li>
+            <p class="meta">
+              {study.organization} · {study.stack.join(', ')}
+            </p>
+            <h3>
+              <a href={`/work/${study.slug}/`}>{study.title}</a>
+            </h3>
+            <p>{study.summary}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </Section>
+
+  <Section id="projects" title="Other projects">
+    <ProjectList items={otherProjects} />
+  </Section>
+</AudiencePage>
+
+<style>
+  .button-row {
+    margin-bottom: 0;
+  }
+</style>

@@ -2,12 +2,21 @@
 import { judging } from '../data';
 import ExternalLink from './ExternalLink.astro';
 import Figures from './Figures.astro';
+
+interface Props {
+  /** Show this many events in full; the rest render in a compact grid. Omit to show all in full. */
+  featured?: number;
+}
+
+const { featured = judging.events.length } = Astro.props;
+const lead = judging.events.slice(0, featured);
+const rest = judging.events.slice(featured);
 ---
 
 <Figures items={judging.stats} label="Judging at a glance" />
 <ul class="entry-list">
   {
-    judging.events.map((event) => (
+    lead.map((event) => (
       <li>
         <h3>{event.title}</h3>
         <p class="meta">{event.meta}</p>
@@ -17,3 +26,62 @@ import Figures from './Figures.astro';
     ))
   }
 </ul>
+{
+  rest.length > 0 && (
+    <>
+      <h3 class="judging__more">More judging, 2025 to 2026</h3>
+      <ul class="judging__grid">
+        {rest.map((event) => (
+          <li>
+            <h4>{event.title}</h4>
+            <p class="meta">{event.meta}</p>
+            <p class="judging__desc">{event.description}</p>
+            {event.link && <ExternalLink link={event.link} />}
+          </li>
+        ))}
+      </ul>
+    </>
+  )
+}
+
+<style>
+  .judging__more {
+    margin-top: var(--space-7);
+  }
+
+  .judging__grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0 var(--space-6);
+  }
+
+  .judging__grid li {
+    max-width: none;
+    padding: var(--space-4) 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .judging__grid h4 {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 600;
+    margin: 0 0 var(--space-1);
+  }
+
+  .judging__grid .meta {
+    margin-bottom: var(--space-2);
+  }
+
+  .judging__desc {
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-1);
+  }
+
+  @media (min-width: 640px) {
+    .judging__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

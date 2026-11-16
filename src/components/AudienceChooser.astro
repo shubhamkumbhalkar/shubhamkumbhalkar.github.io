@@ -1,0 +1,223 @@
+---
+import { audiencePath, audiences, home } from '../data';
+import type { AudienceSlug } from '../data/types';
+---
+
+<section class="paths" id="paths" aria-labelledby="paths-heading">
+  <div class="container">
+    <div class="paths__head">
+      <h2 id="paths-heading">{home.chooser.heading}</h2>
+      <p>{home.chooser.intro}</p>
+    </div>
+    <ol class="paths__list">
+      {
+        audiences.map((item, index) => (
+          <li class="path" data-audience={item.slug}>
+            <p class="path__index" aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </p>
+            <h3 class="path__label">
+              <a class="path__link" href={audiencePath(item.slug as AudienceSlug)}>
+                {item.label}
+              </a>
+            </h3>
+            <p class="path__pitch">{item.pitch}</p>
+            <ul class="path__proof">
+              {item.proof.map((line) => (
+                <li>{line}</li>
+              ))}
+            </ul>
+            <p class="path__cta">
+              {item.cta}
+              <span class="path__arrow" aria-hidden="true">
+                →
+              </span>
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  /*
+   * The chooser is a fixed navy band in both themes, so its palette is local.
+   * Every colour pair here clears 4.5:1 against #0f172a.
+   */
+  .paths {
+    --band-bg: #0f172a;
+    --band-text: #f8fafc;
+    --band-muted: #cbd5e1;
+    --band-accent: #7dd3fc;
+    --band-rule: #475569;
+
+    background: var(--band-bg);
+    color: var(--band-text);
+    padding: var(--space-8) 0 var(--space-8);
+    border-block: 1px solid var(--color-border);
+  }
+
+  .paths__head {
+    display: grid;
+    gap: var(--space-3);
+    margin-bottom: var(--space-7);
+  }
+
+  .paths__head h2 {
+    font-size: var(--text-3xl);
+    margin: 0;
+  }
+
+  .paths__head p {
+    color: var(--band-muted);
+    font-size: var(--text-lg);
+    margin: 0;
+    max-width: 44ch;
+  }
+
+  .paths__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-7);
+  }
+
+  .path {
+    position: relative;
+    max-width: none;
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--band-rule);
+    transition: opacity var(--duration-hover) var(--ease-out);
+  }
+
+  /* Accent rule: a short tab at rest, full width when the path is targeted. */
+  .path::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--band-accent);
+    transform: scaleX(0.18);
+    transform-origin: left center;
+    transition: transform 240ms var(--ease-out);
+  }
+
+  .path__index {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--band-accent);
+    margin: 0 0 var(--space-4);
+  }
+
+  .path__label {
+    font-size: var(--text-2xl);
+    margin: 0 0 var(--space-3);
+  }
+
+  .path__link {
+    color: var(--band-text);
+    text-decoration: none;
+  }
+
+  /* The whole panel is one target; the link stays the only focusable element. */
+  .path__link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .path__link:focus-visible {
+    outline: 3px solid var(--band-accent);
+    outline-offset: 4px;
+  }
+
+  @supports selector(:has(*)) {
+    .path__link:focus-visible {
+      outline: none;
+    }
+
+    .path:has(.path__link:focus-visible) {
+      outline: 3px solid var(--band-accent);
+      outline-offset: var(--space-3);
+    }
+
+    .path:has(.path__link:focus-visible)::before {
+      transform: scaleX(1);
+    }
+  }
+
+  .path__pitch {
+    color: var(--band-muted);
+    margin-bottom: var(--space-4);
+  }
+
+  .path__proof {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-5);
+  }
+
+  .path__proof li {
+    padding: var(--space-2) 0;
+    border-top: 1px solid var(--band-rule);
+    font-size: var(--text-sm);
+  }
+
+  .path__cta {
+    margin: 0;
+    font-weight: 500;
+    color: var(--band-accent);
+  }
+
+  .path__arrow {
+    display: inline-block;
+    margin-left: var(--space-1);
+    transition: transform var(--duration-hover) var(--ease-out);
+  }
+
+  .path:active::before {
+    transform: scaleX(1);
+  }
+
+  @media (min-width: 900px) {
+    .paths__head {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      align-items: end;
+      gap: var(--space-7);
+    }
+
+    .paths__list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-6);
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .path:hover::before {
+      transform: scaleX(1);
+    }
+
+    .path:hover .path__arrow {
+      transform: translateX(4px);
+    }
+
+    .path:hover .path__link {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+    }
+
+    /* Dim the paths you are not pointing at, so the target is unmistakable. */
+    .paths__list:has(.path:hover) .path:not(:hover) {
+      opacity: 0.72;
+    }
+  }
+
+  .paths__list:has(.path__link:focus-visible) .path:not(:has(.path__link:focus-visible)) {
+    opacity: 0.72;
+  }
+</style>

@@ -8,9 +8,13 @@ const caseStudies = JSON.parse(
   readFileSync(new URL('../src/data/case-studies.json', import.meta.url), 'utf8'),
 ) as CaseStudyEntry[];
 
+/** Audience destination pages, in the order the home chooser lists them. */
+export const audiencePaths = ['/for/editors/', '/for/hiring/', '/for/engineers/'];
+
 /** Every generated HTML page. Keep in sync with src/pages. */
 export const pages: string[] = [
   '/',
+  ...audiencePaths,
   '/writing/',
   '/cv/',
   '/work/',

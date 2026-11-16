@@ -1,0 +1,25 @@
+---
+import type { RecognitionItem } from '../data/types';
+import ExternalLink from './ExternalLink.astro';
+
+interface Props {
+  items: RecognitionItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<ul class="entry-list">
+  {
+    items.map((item) => (
+      <li>
+        <h3>{item.title}</h3>
+        <p class="meta">{item.meta}</p>
+        <p>{item.description}</p>
+        {item.links.map((link) => (
+          <ExternalLink link={link} />
+        ))}
+      </li>
+    ))
+  }
+</ul>

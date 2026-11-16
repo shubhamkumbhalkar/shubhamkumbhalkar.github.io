@@ -19,7 +19,7 @@ const { study } = Astro.props;
 <Base title={`${study.title} | ${profile.name}`} description={study.summary}>
   <article class="container case-study">
     <header class="case-study__head">
-      <p class="eyebrow"><a href="/#work">Selected work</a></p>
+      <p class="eyebrow"><a href="/work/">Selected work</a></p>
       <h1>{study.title}</h1>
       <p class="lede">{study.summary}</p>
     </header>
@@ -78,7 +78,7 @@ const { study } = Astro.props;
       )
     }
 
-    <p><a href="/#work">Back to selected work</a></p>
+    <p><a href="/work/">All case studies</a></p>
   </article>
 </Base>
 

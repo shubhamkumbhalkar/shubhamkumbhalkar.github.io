@@ -1,0 +1,86 @@
+---
+import { audiencePath, audiences } from '../data';
+import type { AudienceSlug } from '../data/types';
+
+interface Props {
+  current: AudienceSlug;
+}
+
+const { current } = Astro.props;
+const others = audiences.filter((item) => item.slug !== current);
+---
+
+<nav class="other-paths" aria-labelledby="other-paths-heading">
+  <div class="container">
+    <h2 id="other-paths-heading">Other paths</h2>
+    <ul>
+      {
+        others.map((item) => (
+          <li>
+            <a href={audiencePath(item.slug as AudienceSlug)}>
+              <span class="other-paths__label">For {item.label.toLowerCase()}</span>
+              <span class="other-paths__pitch">{item.pitch}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .other-paths {
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-8) 0 0;
+  }
+
+  .other-paths h2 {
+    font-size: var(--text-xl);
+  }
+
+  .other-paths ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .other-paths li {
+    max-width: none;
+  }
+
+  .other-paths a {
+    display: grid;
+    gap: var(--space-1);
+    padding: var(--space-4) 0;
+    border-top: 3px solid var(--color-text);
+    text-decoration: none;
+  }
+
+  .other-paths__label {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .other-paths__pitch {
+    color: var(--color-muted);
+  }
+
+  @media (min-width: 900px) {
+    .other-paths ul {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-6);
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .other-paths a:hover .other-paths__label {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.18em;
+    }
+  }
+</style>

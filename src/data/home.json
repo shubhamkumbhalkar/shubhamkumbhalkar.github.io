@@ -1,0 +1,41 @@
+{
+  "eyebrow": "Senior software engineer · Amazon",
+  "statement": "I build software that has to keep working, across distributed systems, security, and applied AI.",
+  "chooser": {
+    "heading": "What brought you here?",
+    "intro": "Choose a path. Each one opens a page curated for that reader, with the details everyone else can skip."
+  },
+  "evidence": {
+    "heading": "Selected highlights",
+    "items": [
+      {
+        "label": "Writing",
+        "text": "“The Real Cost of AI Code Shows Up 30 Days Later,” published by BLOG@CACM on Nov 4, 2026.",
+        "link": {
+          "label": "Read on BLOG@CACM",
+          "url": "https://cacm.acm.org/blogcacm/the-real-cost-of-ai-code-shows-up-30-days-later/"
+        }
+      },
+      {
+        "label": "Judging",
+        "text": "Mentor and judge at HackMIT 2026, one of a 12-judge panel at Frontier Cascadia, and a core judge for the USAII Global AI Hackathon, which drew teams from 90+ countries.",
+        "link": { "label": "All judging", "url": "/for/editors/#judging" }
+      },
+      {
+        "label": "Production",
+        "text": "A high-throughput Amazon system handling 500K+ requests per second across 5 external APIs, improving SLA adherence by 22%.",
+        "link": { "label": "Read the case study", "url": "/work/seller-inventory-forecasting/" }
+      },
+      {
+        "label": "Open source",
+        "text": "Agent Skills, an MIT-licensed collection of reusable AI agent skills, including distributed-systems design review and zero-downtime migration.",
+        "link": { "label": "View on GitHub", "url": "https://github.com/shubhamkumbhalkar/skills" }
+      }
+    ]
+  },
+  "selectedWork": [
+    "seller-inventory-forecasting",
+    "lendingclub-auto-refinance",
+    "agent-skills"
+  ]
+}

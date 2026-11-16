@@ -1,0 +1,57 @@
+[
+  {
+    "slug": "editors",
+    "label": "Editors & program committees",
+    "pitch": "Writing, research, judging and speaking, with venue, date and status for each item.",
+    "proof": [
+      "Published by BLOG@CACM, Nov 2026",
+      "11 hackathons and competitions judged, 2025 to 2026",
+      "Featured alumni speaker, Alumni Conclave 2026"
+    ],
+    "cta": "See writing, judging and credentials",
+    "title": "Writing, research, judging and speaking",
+    "lede": "Published articles and papers, technical judging at hackathons and AI competitions, and public talks. Each item lists its venue, date and real status.",
+    "metaDescription": "Shubham Kumbhalkar for editors, program committees and award organizers: publications, BLOG@CACM writing, technical judging, talks and public credentials.",
+    "caseStudies": []
+  },
+  {
+    "slug": "hiring",
+    "label": "Hiring managers",
+    "pitch": "Production case studies with measured results, a role-by-role timeline, references and the resume.",
+    "proof": [
+      "500K+ requests per second across 5 external APIs",
+      "+$1.1M monthly revenue from a 7-state expansion",
+      "Four testimonials from LendingClub managers"
+    ],
+    "cta": "See case studies, experience and resume",
+    "title": "Production work, measured results and references",
+    "lede": "Senior software engineer with 10+ years across fintech, e-commerce and cloud infrastructure. Currently at Amazon.",
+    "metaDescription": "Shubham Kumbhalkar for hiring managers: production case studies with measured results, experience from 2016 to now, manager testimonials and resume.",
+    "caseStudies": [
+      "seller-inventory-forecasting",
+      "maws-to-naws-migration",
+      "cve-security-tooling",
+      "lendingclub-auto-refinance"
+    ]
+  },
+  {
+    "slug": "engineers",
+    "label": "Engineers",
+    "pitch": "Open-source tools, technical writing and case studies that show how the systems were built.",
+    "proof": [
+      "Agent Skills collection, MIT-licensed",
+      "Application Autofill userscript, review-first",
+      "Writing on AI coding tools and system design"
+    ],
+    "cta": "See open source, writing and GitHub",
+    "title": "Open source, technical writing and case studies",
+    "lede": "Public tools and write-ups shared with the developer community, plus case studies from production work.",
+    "metaDescription": "Shubham Kumbhalkar for engineers: open-source projects on GitHub, technical writing and production case studies.",
+    "caseStudies": [
+      "agent-skills",
+      "seller-inventory-forecasting",
+      "maws-to-naws-migration",
+      "cve-security-tooling"
+    ]
+  }
+]

@@ -312,6 +312,16 @@ img {
   }
 }
 
+/* "Continue to the full list" link closing a curated preview. */
+.onward {
+  margin: var(--space-5) 0 0;
+  font-weight: 500;
+}
+
+.onward a::after {
+  content: ' \2192';
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
